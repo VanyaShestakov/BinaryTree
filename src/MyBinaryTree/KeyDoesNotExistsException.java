@@ -1,7 +1,11 @@
 package MyBinaryTree;
 
-public class KeyDoesNotExistsException extends IndexOutOfBoundsException {
-    public KeyDoesNotExistsException(int key) {
-        super("Key that not exists: " + key);
+public class KeyDoesNotExistsException extends RuntimeException {
+    public KeyDoesNotExistsException() {
     }
+
+    public KeyDoesNotExistsException(int key) {
+        super("Key does not exists: " + key);
+    }
+
 }
