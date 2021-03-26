@@ -63,14 +63,14 @@ public class BinaryTree<T> {
                         current = current.right;
                     }
                     if (current == null) {
-                        return null;
+                        throw new KeyDoesNotExistsException(key);
                     }
                 }
             } else {
                 return root.value;
             }
         } else {
-            return null;
+            throw  new EmptyTreeException("Tree is empty");
         }
         return current.value;
     }
