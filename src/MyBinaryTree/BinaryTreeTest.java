@@ -1,5 +1,7 @@
 package MyBinaryTree;
 
+import Exceptions.EmptyTreeException;
+import Exceptions.KeyDoesNotExistsException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import java.util.Arrays;
@@ -44,12 +46,12 @@ public class BinaryTreeTest {
     @Test
     void getTest() {
         BinaryTree<Integer> tree = new BinaryTree<>();
-        Assertions.assertNull(tree.get(100));
+        Assertions.assertThrows(EmptyTreeException.class,() -> tree.get(100));
         int key = 100;
         int expectedValue = 123;
         tree.add(key, expectedValue);
         Assertions.assertEquals(Optional.of(expectedValue), Optional.ofNullable(tree.get(key)));
-        Assertions.assertNull(tree.get(1));
+        Assertions.assertThrows(KeyDoesNotExistsException.class ,() -> tree.get(1));
     }
 
     @Test
@@ -89,7 +91,7 @@ public class BinaryTreeTest {
     }
 
     @Test
-    void isEmptyTest() { 
+    void isEmptyTest() {
         BinaryTree<Integer> tree = new BinaryTree<>();
         Assertions.assertTrue(tree.isEmpty());
         tree.add(4, 1);
@@ -104,7 +106,7 @@ public class BinaryTreeTest {
         tree.add(8, 543);
         Assertions.assertFalse(tree.isEmpty());
         tree.clear();
-        Assertions.assertNull(tree.get(5));
+        Assertions.assertThrows(EmptyTreeException.class,() -> tree.get(5));
         Assertions.assertTrue(tree.isEmpty());
     }
 

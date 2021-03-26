@@ -1,5 +1,8 @@
 package MyBinaryTree;
 
+import Exceptions.EmptyTreeException;
+import Exceptions.KeyDoesNotExistsException;
+
 import java.util.*;
 
 public class BinaryTree<T> {
@@ -70,7 +73,7 @@ public class BinaryTree<T> {
                 return root.value;
             }
         } else {
-            throw  new EmptyTreeException("Tree is empty");
+            throw new EmptyTreeException("Tree is empty");
         }
         return current.value;
     }

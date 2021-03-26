@@ -1,4 +1,4 @@
-package MyBinaryTree;
+package Exceptions;
 
 public class EmptyTreeException extends RuntimeException {
     public EmptyTreeException(String message) {

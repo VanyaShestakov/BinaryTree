@@ -1,4 +1,4 @@
-package MyBinaryTree;
+package Exceptions;
 
 public class KeyDoesNotExistsException extends RuntimeException {
     public KeyDoesNotExistsException() {
