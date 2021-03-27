@@ -84,6 +84,23 @@ public class BinaryTree<T> {
         return recursiveDepthFirst(root, result);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        BinaryTree<T> tree = (BinaryTree<T>) o;
+        return this.toStringBreadthFirst().equals(tree.toStringBreadthFirst());
+    }
+
+    @Override
+    public int hashCode() {
+        return 31 * this.toStringBreadthFirst().hashCode();
+    }
+
     public boolean isEmpty() {
         return root == null;
     }
