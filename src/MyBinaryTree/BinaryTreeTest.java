@@ -4,6 +4,8 @@ import Exceptions.EmptyTreeException;
 import Exceptions.KeyDoesNotExistsException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Optional;
 
@@ -123,4 +125,54 @@ public class BinaryTreeTest {
         Assertions.assertFalse(tree.contains(10));
     }
 
+    @Test
+    void equalsTest() {
+        BinaryTree<Integer> firstTree = new BinaryTree<>();
+        BinaryTree<Integer> secondTree = new BinaryTree<>();
+        BinaryTree<Integer> otherTree = new BinaryTree<>();
+        ArrayList<Integer> objOfOtherClass = new ArrayList<>();
+
+        firstTree.add(3, 1);
+        firstTree.add(2, 2);
+        firstTree.add(4, 3);
+
+        secondTree.add(3, 1);
+        secondTree.add(2, 2);
+        secondTree.add(4, 3);
+
+        otherTree.add(3, 0);
+        otherTree.add(2, 2);
+        otherTree.add(4, 3);
+
+        Assertions.assertTrue(firstTree.equals(secondTree));
+        Assertions.assertTrue(firstTree.equals(firstTree));
+        Assertions.assertFalse(firstTree.equals(null));
+        Assertions.assertFalse(firstTree.equals(objOfOtherClass));
+        Assertions.assertFalse(firstTree.equals(otherTree));
+    }
+
+    @Test
+    void hashCodeTest() {
+        BinaryTree<Integer> firstTree = new BinaryTree<>();
+        BinaryTree<Integer> secondTree = new BinaryTree<>();
+        BinaryTree<Integer> otherTree = new BinaryTree<>();
+        ArrayList<Integer> objOfOtherClass = new ArrayList<>();
+
+        firstTree.add(3, 1);
+        firstTree.add(2, 2);
+        firstTree.add(4, 3);
+
+        secondTree.add(3, 1);
+        secondTree.add(2, 2);
+        secondTree.add(4, 3);
+
+        otherTree.add(3, 0);
+        otherTree.add(2, 2);
+        otherTree.add(4, 3);
+
+        Assertions.assertEquals(firstTree.hashCode(), firstTree.hashCode());
+        Assertions.assertEquals(firstTree.hashCode(), secondTree.hashCode());
+        Assertions.assertNotEquals(firstTree.hashCode(), otherTree.hashCode());
+        Assertions.assertNotEquals(firstTree.hashCode(), objOfOtherClass.hashCode());
+    }
 }
